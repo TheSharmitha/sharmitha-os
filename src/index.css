@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #010a15;
+  color: #e2f1ff;
+  overflow: hidden;
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  user-select: none;
+}
+
+/* Custom Scrollbar for HUD panels */
+.hud-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.hud-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 240, 255, 0.05);
+}
+.hud-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.35);
+  border-radius: 2px;
+}
+.hud-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.7);
+}
+
+/* HUD Scanline Effect */
+.hud-scanlines::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(1, 10, 21, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(0, 240, 255, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 240, 255, 0.03));
+  z-index: 9999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Glitch animation text */
+.glitch-text {
+  position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #010a15;
+}
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff3b3b;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -2px 0 #00f0ff;
+  clip: rect(85px, 450px, 140px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(15px, 9999px, 66px, 0); }
+  10% { clip: rect(34px, 9999px, 55px, 0); }
+  20% { clip: rect(78px, 9999px, 5px, 0); }
+  30% { clip: rect(12px, 9999px, 85px, 0); }
+  40% { clip: rect(55px, 9999px, 40px, 0); }
+  50% { clip: rect(98px, 9999px, 11px, 0); }
+  60% { clip: rect(14px, 9999px, 78px, 0); }
+  70% { clip: rect(33px, 9999px, 5px, 0); }
+  80% { clip: rect(67px, 9999px, 90px, 0); }
+  90% { clip: rect(45px, 9999px, 23px, 0); }
+  100% { clip: rect(88px, 9999px, 67px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(55px, 9999px, 12px, 0); }
+  10% { clip: rect(85px, 9999px, 45px, 0); }
+  20% { clip: rect(12px, 9999px, 98px, 0); }
+  30% { clip: rect(44px, 9999px, 14px, 0); }
+  40% { clip: rect(76px, 9999px, 33px, 0); }
+  50% { clip: rect(11px, 9999px, 88px, 0); }
+  60% { clip: rect(90px, 9999px, 67px, 0); }
+  70% { clip: rect(23px, 9999px, 45px, 0); }
+  80% { clip: rect(66px, 9999px, 12px, 0); }
+  90% { clip: rect(5px, 9999px, 76px, 0); }
+  100% { clip: rect(98px, 9999px, 55px, 0); }
+}
+
+/* Glassmorphism utility */
+.hud-glass {
+  background: rgba(1, 10, 21, 0.75);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.05), 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.hud-glass-header {
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.15) 0%, rgba(0, 240, 255, 0.02) 100%);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.35);
+}
+
+/* Hologram visual effect */
+.hologram-effect {
+  position: relative;
+  overflow: hidden;
+}
+.hologram-effect::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(0deg, rgba(0, 240, 255, 0) 0%, rgba(0, 240, 255, 0.08) 50%, rgba(0, 240, 255, 0) 100%);
+  animation: hologram-scan 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hologram-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Keyframes for glowing effects */
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 2px rgba(0, 240, 255, 0.3); }
+  50% { text-shadow: 0 0 18px rgba(0, 240, 255, 0.95), 0 0 4px rgba(0, 240, 255, 0.6); }
+}
+
+.glow-pulse-text {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
