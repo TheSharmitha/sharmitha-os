@@ -32,7 +32,7 @@ export default function RoboticsModule({ onClose }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[85vh] overflow-y-auto hud-glass p-6 rounded-lg pointer-events-auto z-20 text-[#d2e5ff] hud-scrollbar border-jarvis-red/40"
+      className="relative w-[92%] md:w-full md:flex-1 max-w-2xl max-h-none md:max-h-full overflow-y-visible md:overflow-y-auto hud-glass p-6 rounded-lg pointer-events-auto z-20 text-[#d2e5ff] hud-scrollbar border-jarvis-red/40 mx-auto my-4 md:my-0 md:mx-auto"
     >
       {/* Header */}
       <div className="flex justify-between items-center border-b border-jarvis-red/30 pb-2 mb-5">

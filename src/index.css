@@ -11,9 +11,14 @@ html, body, #root {
   height: 100%;
   background-color: #010a15;
   color: #e2f1ff;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   font-family: 'Rajdhani', 'Inter', sans-serif;
   user-select: none;
+}
+
+canvas {
+  touch-action: none;
 }
 
 /* Custom Scrollbar for HUD panels */

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
-import { Stars, Torus } from '@react-three/drei';
+import { Stars, Torus, OrbitControls } from '@react-three/drei';
 import ArcReactor from './ArcReactor';
 import gsap from 'gsap';
 
@@ -107,10 +107,11 @@ function HolographicHUDGimbal() {
 
 export default function ThreeCanvas({ activeSection }) {
   return (
-    <div className="absolute inset-0 z-0 w-full h-full bg-[#010a15]">
+    <div className="fixed inset-0 z-0 w-full h-full bg-[#010a15]">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
         gl={{ antialias: true, alpha: false }}
+        style={{ touchAction: 'none' }}
       >
         <color attach="background" args={['#010a15']} />
         
@@ -136,6 +137,13 @@ export default function ThreeCanvas({ activeSection }) {
 
         {/* Dynamic camera navigation controller */}
         <CameraController activeSection={activeSection} />
+
+        {/* Control Three.js camera rotation via OrbitControls on home screen only */}
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          enabled={!activeSection}
+        />
       </Canvas>
     </div>
   );

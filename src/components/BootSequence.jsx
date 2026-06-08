@@ -55,7 +55,7 @@ export default function BootSequence({ onComplete }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#010a15] font-mono p-6 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex justify-center items-start md:items-center bg-[#010a15] font-mono p-6 overflow-y-auto">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern bg-[size:40px_40px] opacity-10 pointer-events-none" />
       
@@ -66,7 +66,7 @@ export default function BootSequence({ onComplete }) {
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 1.05 }}
-        className="w-full max-w-2xl bg-jarvis-dark/85 border border-jarvis-panelBorder p-8 rounded-lg shadow-glow-cyan relative z-10"
+        className="w-full max-w-2xl bg-jarvis-dark/85 border border-jarvis-panelBorder p-8 rounded-lg shadow-glow-cyan relative z-10 my-auto"
       >
         {/* Terminal Header */}
         <div className="flex justify-between items-center hud-glass-header pb-3 mb-6">

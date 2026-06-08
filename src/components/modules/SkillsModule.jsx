@@ -104,7 +104,7 @@ export default function SkillsModule({ onClose }) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3 }}
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl max-h-[85vh] overflow-y-auto hud-glass p-6 rounded-lg pointer-events-auto z-20 text-[#d2e5ff] hud-scrollbar border-jarvis-blue/30"
+      className="relative w-[92%] md:w-full md:flex-1 max-w-3xl max-h-none md:max-h-full overflow-y-visible md:overflow-y-auto hud-glass p-6 rounded-lg pointer-events-auto z-20 text-[#d2e5ff] hud-scrollbar border-jarvis-blue/30 mx-auto my-4 md:my-0 md:mx-auto"
     >
       {/* Header */}
       <div className="flex justify-between items-center hud-glass-header pb-2 mb-5">
@@ -128,7 +128,7 @@ export default function SkillsModule({ onClose }) {
             <button
               key={idx}
               onClick={() => handleMarkSelect(idx)}
-              className={`flex items-center gap-3 px-3 py-3 border rounded text-left transition-all duration-300 font-orbitron tracking-widest text-[10px] md:text-xs font-bold w-full ${
+              className={`flex items-center gap-3 px-3 py-3 border rounded text-left transition-all duration-300 font-orbitron tracking-widest text-[10px] md:text-xs font-bold shrink-0 w-36 md:w-full md:shrink ${
                 selectedMark === idx
                   ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/15 shadow-glow-cyan'
                   : 'border-jarvis-blue/25 text-[#8eb0d9] hover:border-jarvis-blue/50 hover:bg-jarvis-blue/5'

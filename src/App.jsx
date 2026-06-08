@@ -17,7 +17,7 @@ export default function App() {
   const [easterEggOpen, setEasterEggOpen] = useState(false);
 
   return (
-    <div className="relative w-full h-full overflow-hidden select-none bg-[#010a15]">
+    <div className="relative w-full min-h-screen select-none bg-[#010a15] flex flex-col">
       
       {/* 1. Introductory Boot Sequence */}
       <AnimatePresence mode="wait">
@@ -32,34 +32,34 @@ export default function App() {
           {/* 3D WebGL Canvas Layer */}
           <ThreeCanvas activeSection={activeSection} />
 
-          {/* Interactive HUD HUD overlay framework */}
+          {/* Interactive HUD HUD overlay framework with nested content modules */}
           <HUDOverlay 
             activeSection={activeSection} 
             setActiveSection={setActiveSection} 
             onTriggerEasterEgg={() => setEasterEggOpen(true)}
-          />
-
-          {/* Content Overlays Layer */}
-          <AnimatePresence mode="wait">
-            {activeSection === 'about' && (
-              <AboutModule onClose={() => setActiveSection('')} />
-            )}
-            {activeSection === 'skills' && (
-              <SkillsModule onClose={() => setActiveSection('')} />
-            )}
-            {activeSection === 'projects' && (
-              <ProjectsModule onClose={() => setActiveSection('')} />
-            )}
-            {activeSection === 'timeline' && (
-              <TimelineModule onClose={() => setActiveSection('')} />
-            )}
-            {activeSection === 'robotics' && (
-              <RoboticsModule onClose={() => setActiveSection('')} />
-            )}
-            {activeSection === 'contact' && (
-              <ContactModule onClose={() => setActiveSection('')} />
-            )}
-          </AnimatePresence>
+          >
+            {/* Content Overlays Layer */}
+            <AnimatePresence mode="wait">
+              {activeSection === 'about' && (
+                <AboutModule onClose={() => setActiveSection('')} />
+              )}
+              {activeSection === 'skills' && (
+                <SkillsModule onClose={() => setActiveSection('')} />
+              )}
+              {activeSection === 'projects' && (
+                <ProjectsModule onClose={() => setActiveSection('')} />
+              )}
+              {activeSection === 'timeline' && (
+                <TimelineModule onClose={() => setActiveSection('')} />
+              )}
+              {activeSection === 'robotics' && (
+                <RoboticsModule onClose={() => setActiveSection('')} />
+              )}
+              {activeSection === 'contact' && (
+                <ContactModule onClose={() => setActiveSection('')} />
+              )}
+            </AnimatePresence>
+          </HUDOverlay>
 
           {/* Stark Override Secret Screen */}
           <AnimatePresence>

@@ -33,7 +33,7 @@ export default function EasterEgg({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 font-mono p-4 md:p-6 select-none overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex justify-center items-start md:items-center bg-black/95 font-mono p-4 md:p-6 select-none overflow-y-auto">
       {/* Red Alert scanline overlays */}
       <div className="absolute inset-0 bg-grid-pattern bg-[size:30px_30px] opacity-15 pointer-events-none" />
       
@@ -45,7 +45,7 @@ export default function EasterEgg({ isOpen, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ type: 'spring', damping: 20 }}
-        className="w-full max-w-3xl bg-black border border-jarvis-red p-6 md:p-8 rounded-lg shadow-glow-red relative z-10 text-jarvis-red"
+        className="w-full max-w-3xl bg-black border border-jarvis-red p-6 md:p-8 rounded-lg shadow-glow-red relative z-10 text-jarvis-red my-auto"
       >
         {/* Absolute Exit button */}
         <button 

@@ -23,7 +23,8 @@ import audioController from './AudioController';
 export default function HUDOverlay({ 
   activeSection, 
   setActiveSection, 
-  onTriggerEasterEgg 
+  onTriggerEasterEgg,
+  children
 }) {
   const [time, setTime] = useState(new Date());
   const [isMuted, setIsMuted] = useState(false);
@@ -110,7 +111,7 @@ export default function HUDOverlay({
   };
 
   return (
-    <div className="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-4 md:p-6 font-mono">
+    <div className="relative w-full min-h-screen z-10 pointer-events-none flex flex-col justify-between p-4 md:p-6 font-mono">
       
       {/* TOP BAR - Telemetry & Status HUD */}
       <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pointer-events-auto bg-jarvis-panel border border-jarvis-panelBorder p-4 rounded-lg hud-glass">
@@ -162,14 +163,14 @@ export default function HUDOverlay({
       </div>
 
       {/* MID SECTION - Nav and Dialog Panels */}
-      <div className="flex-1 my-4 flex flex-col md:flex-row justify-between items-stretch gap-6 relative overflow-hidden">
+      <div className="flex-1 my-4 flex flex-col md:flex-row justify-start items-stretch gap-6 relative min-h-0">
         
         {/* Left Side: Navigation Controls */}
-        <div className="flex md:flex-col justify-start items-stretch gap-2.5 pointer-events-auto overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 scrollbar-none w-full md:w-56 shrink-0">
+        <div className="flex md:flex-col justify-start items-stretch gap-2.5 pointer-events-auto overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 scrollbar-none w-full md:w-56 shrink-0 md:sticky md:top-0 md:self-start">
           
           <button
             onClick={() => handleNavClick('about')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'about'
                 ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/10 shadow-glow-cyan'
                 : 'border-jarvis-blue/30 text-jarvis-blue/70 hover:border-jarvis-blue/60 hover:text-jarvis-blue hover:bg-jarvis-blue/5'
@@ -181,7 +182,7 @@ export default function HUDOverlay({
 
           <button
             onClick={() => handleNavClick('skills')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'skills'
                 ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/10 shadow-glow-cyan'
                 : 'border-jarvis-blue/30 text-jarvis-blue/70 hover:border-jarvis-blue/60 hover:text-jarvis-blue hover:bg-jarvis-blue/5'
@@ -193,7 +194,7 @@ export default function HUDOverlay({
 
           <button
             onClick={() => handleNavClick('projects')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'projects'
                 ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/10 shadow-glow-cyan'
                 : 'border-jarvis-blue/30 text-jarvis-blue/70 hover:border-jarvis-blue/60 hover:text-jarvis-blue hover:bg-jarvis-blue/5'
@@ -205,7 +206,7 @@ export default function HUDOverlay({
 
           <button
             onClick={() => handleNavClick('timeline')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'timeline'
                 ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/10 shadow-glow-cyan'
                 : 'border-jarvis-blue/30 text-jarvis-blue/70 hover:border-jarvis-blue/60 hover:text-jarvis-blue hover:bg-jarvis-blue/5'
@@ -217,7 +218,7 @@ export default function HUDOverlay({
 
           <button
             onClick={() => handleNavClick('robotics')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'robotics'
                 ? 'border-jarvis-red text-jarvis-red bg-jarvis-red/10 shadow-glow-red'
                 : 'border-jarvis-red/30 text-jarvis-red/70 hover:border-jarvis-red/60 hover:text-jarvis-red hover:bg-jarvis-red/5'
@@ -229,7 +230,7 @@ export default function HUDOverlay({
 
           <button
             onClick={() => handleNavClick('contact')}
-            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest ${
+            className={`flex items-center justify-between gap-3 px-4 py-3 border rounded text-left transition-all duration-300 font-orbitron text-xs font-bold tracking-widest shrink-0 w-44 md:w-full md:shrink ${
               activeSection === 'contact'
                 ? 'border-jarvis-blue text-jarvis-blue bg-jarvis-blue/10 shadow-glow-cyan'
                 : 'border-jarvis-blue/30 text-jarvis-blue/70 hover:border-jarvis-blue/60 hover:text-jarvis-blue hover:bg-jarvis-blue/5'
@@ -241,8 +242,11 @@ export default function HUDOverlay({
 
         </div>
 
+        {/* Render active module inline in flow on mobile, absolute centered on desktop */}
+        {children}
+
         {/* Empty mid area: lets the 3D Arc Reactor be visible */}
-        <div className="flex-1 pointer-events-none" />
+        {!activeSection && <div className="flex-1 pointer-events-none" />}
 
       </div>
 
